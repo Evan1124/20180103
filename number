@@ -1,0 +1,80 @@
+# 20180103
+#include<stdio.h>
+#include<string.h>
+int main()
+{   char a0[7][6]={"*****","*   *","*   *","*   *","*   *","*   *","*****"};
+    char a1[7][6]={"    *","    *","    *","    *","    *","    *","    *"};
+    char a2[7][6]={"*****","    *","    *","*****","*    ","*    ","*****"};
+    char a3[7][6]={"*****","    *","    *","*****","    *","    *","*****"};
+    char a4[7][6]={"*   *","*   *","*   *","*****","    *","    *","    *"};
+    char a5[7][6]={"*****","*    ","*    ","*****","    *","    *","*****"};
+    char a6[7][6]={"*****","*    ","*    ","*****","*   *","*   *","*****"};
+    char a7[7][6]={"*****","    *","    *","    *","    *","    *","    *"};
+    char a8[7][6]={"*****","*   *","*   *","*****","*   *","*   *","*****"};
+    char a9[7][6]={"*****","*   *","*   *","*****","    *","    *","*****"};
+    
+    int n;
+    scanf("%d",&n);
+    int i;
+    int a[n];
+    for(i=0;i<n;i++)
+    { int m;
+      scanf("%d",&m);
+      a[i]=m;
+	}
+  
+   int count[n];
+   for(i=0;i<n;i++)
+   count[i]=0;
+   int b[n];
+   for(i=0;i<n;i++)
+   b[i]=a[i];
+   for(i=0;i<n;i++)
+   {  while(b[i]!=0)
+      {
+	   b[i]=b[i]/10;
+	   count[i]++;}         //count记载的是a中每个数字的位数 
+   }
+    
+   int c[n];
+   for(i=0;i<n;i++)
+   c[i]=a[i];
+   int d[n][100];
+   int j;
+   for(i=0;i<n;i++)
+   { for(j=count[i]-1;j>=0;j--)
+     { d[i][j]=c[i]%10;
+       c[i]=c[i]/10;
+	 }
+   }
+   
+   int l;
+   for(i=0;i<n;i++)
+   {  printf("%d:\n",a[i]);
+      for(l=0;l<7;l++)
+     { for(j=0;j<count[i];j++)
+     { if(d[i][j]==0)
+	   printf("%s  ",a0[l]);
+	   else if(d[i][j]==1)
+	   printf("%s  ",a1[l]);
+	   else if(d[i][j]==2)
+	   printf("%s  ",a2[l]);
+	   else if(d[i][j]==3)
+	   printf("%s  ",a3[l]);
+	   else if(d[i][j]==4)
+	   printf("%s  ",a4[l]);
+       else if(d[i][j]==5)
+	   printf("%s  ",a5[l]);
+	   else if(d[i][j]==6)
+	   printf("%s  ",a6[l]);
+	   else if(d[i][j]==7)
+	   printf("%s  ",a7[l]);
+	   else if(d[i][j]==8)
+	   printf("%s  ",a8[l]);
+	   else if(d[i][j]==9)
+	   printf("%s  ",a9[l]);
+
+	   }printf("\n");}}
+    
+    return 0;
+ } 
